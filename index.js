@@ -15,7 +15,7 @@ app.use(express.json())
 
 // Route management
 app.get('/:url', async function (req, res) {
-  const resRequest = await axios.get(new Buffer(req.params.url, 'base64').toString('ascii'))
+  const resRequest = await axios.get(Buffer.from(req.params.url, 'base64').toString('utf8'))
   return res.send(resRequest.data)
 })
 
